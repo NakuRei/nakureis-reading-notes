@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "oderwat.indent-rainbow",
+    "mohammadbaqer.better-folding",
+    "streetsidesoftware.code-spell-checker",
+    "naumovs.color-highlight",
+    "igorsbitnev.error-gutters",
+    "saikou9901.evilinspector",
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+    "github.copilot",
+    "kisstkondoros.vscode-gutter-preview",
+    "christian-kohler.path-intellisense",
+    "gruntfuggly.todo-tree",
+    "shardulm94.trailing-spaces"
+  ]
+}
