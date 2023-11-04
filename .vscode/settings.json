@@ -1,5 +1,8 @@
 {
   "cSpell.words": ["NakuRei"],
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   // Linter
   "eslint.workingDirectories": ["./next-app"],
   "editor.codeActionsOnSave": {

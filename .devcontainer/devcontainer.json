@@ -3,15 +3,14 @@
     "dockerfile": "./Dockerfile",
     "context": ".."
   },
-  "forwardPorts": [
-    3000
-  ],
+  "forwardPorts": [3000],
   "customizations": {
     "vscode": {
       "extensions": [
         "PulkitGangwar.nextjs-snippets",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
       ]
     }
   }
