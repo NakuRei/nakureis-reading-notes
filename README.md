@@ -1,4 +1,4 @@
-# nakureis-books
+# nakureis-reading-notes
 
 ## Overview
 
