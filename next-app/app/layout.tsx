@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
 
+import GlobalProviders from './_providers/GlobalProviders';
+
 import Header from './_components/layouts/Header';
 import Footer from './_components/layouts/Footer';
 
@@ -22,23 +24,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="jp">
+    <html lang="jp" suppressHydrationWarning>
       <body
         className={`${notoSansJp.className} flex flex-col h-screen w-screen`}
       >
-        <Header
-          appName={metadata.title?.toString() ?? 'NakuRei'}
-          homePath="/"
-          className="bg-base-300 text-base-content"
-        />
-        <main className="flex flex-col flex-1 justify-center items-center overflow-x-hidden">
-          {children}
-        </main>
-        <Footer
-          authorName="NakuRei"
-          year={2023}
-          className="bg-base-300 text-base-content"
-        />
+        <GlobalProviders>
+          <Header
+            appName={metadata.title?.toString() ?? 'NakuRei'}
+            homePath="/"
+            className="bg-base-300 text-base-content"
+          />
+          <main className="flex flex-col flex-1 justify-center items-center overflow-x-hidden">
+            {children}
+          </main>
+          <Footer
+            authorName="NakuRei"
+            year={2023}
+            className="bg-base-300 text-base-content"
+          />
+        </GlobalProviders>
       </body>
     </html>
   );

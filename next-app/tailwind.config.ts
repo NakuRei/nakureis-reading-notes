@@ -16,5 +16,9 @@ const config: Config = {
     },
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: ['cupcake', 'night'],
+    logs: !process.env.CI,
+  },
 };
 export default config;
