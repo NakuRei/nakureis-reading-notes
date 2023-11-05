@@ -1,6 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
 
+import ToggleModeCheckbox from './ToggleModeCheckbox';
+
 interface HeaderProps {
   appName: string;
   homePath: string;
@@ -25,8 +27,8 @@ export default function Header(props: HeaderProps) {
             {props.appName}
           </button>
         </div>
-        <div className="navbar-end">
-          <button className="btn btn-primary">Primary</button>
+        <div className="navbar-end mr-3">
+          <ToggleModeCheckbox />
         </div>
       </div>
     </header>
