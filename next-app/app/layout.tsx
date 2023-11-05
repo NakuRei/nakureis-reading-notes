@@ -34,7 +34,7 @@ export default function RootLayout({
             homePath="/"
             className="bg-base-300 text-base-content"
           />
-          <main className="flex flex-col flex-1 justify-center items-center overflow-x-hidden">
+          <main className="flex-1 overflow-x-hidden overflow-y-scroll">
             {children}
           </main>
           <Footer
