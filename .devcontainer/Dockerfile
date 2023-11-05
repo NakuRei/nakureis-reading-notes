@@ -5,10 +5,12 @@ EXPOSE 3000
 RUN apt-get update -y \
     && DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
+    ca-certificates \
     git \
     locales \
     tzdata \
     xsel \
+    && update-ca-certificates \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
