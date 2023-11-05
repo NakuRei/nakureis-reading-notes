@@ -5,7 +5,7 @@
 #
 # ===== Format =====
 # == Default ==
-# <type>: <subject>
+# <type>[optional scope]: <subject>
 # <BLANK LINE>
 # <optional body>
 # <BLANK LINE>
