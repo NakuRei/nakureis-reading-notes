@@ -19,7 +19,12 @@ export default function Footer(props: FooterProps) {
         </p>
 
         {/* <!-- Rakuten Web Services Attribution Snippet FROM HERE --> */}
-        <a href="https://developers.rakuten.com/" target="_blank">
+        <a
+          href="https://developers.rakuten.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Rakuten developers page"
+        >
           Supported by Rakuten Developers
         </a>
         {/* <!-- Rakuten Web Services Attribution Snippet TO HERE --> */}

@@ -46,13 +46,15 @@ export default async function Home() {
                 <Link href={`/books/${book.isbn}`} className="btn btn-primary">
                   Notes
                 </Link>
-                <Link
+                <a
                   href={book.affiliateUrl ?? rakutenBooksUrl}
                   className="btn btn-accent"
                   target="_blank"
+                  rel="noopener"
+                  aria-label="Buy this book"
                 >
                   Buy
-                </Link>
+                </a>
               </div>
             </div>
           </div>
