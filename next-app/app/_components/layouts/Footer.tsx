@@ -23,7 +23,7 @@ export default function Footer(props: FooterProps) {
           href="https://developers.rakuten.com/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Visit Rakuten developers page"
+          aria-label="Supported by Rakuten Developers"
         >
           Supported by Rakuten Developers
         </a>
