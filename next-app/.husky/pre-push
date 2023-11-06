@@ -2,4 +2,6 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 cd next-app
+git stash -u
 npm run build
+git stash pop
