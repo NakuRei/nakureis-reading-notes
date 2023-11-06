@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="jp" suppressHydrationWarning>
+    <html lang="ja" suppressHydrationWarning>
       <body
         className={`${notoSansJp.className} flex flex-col h-screen w-screen`}
       >
