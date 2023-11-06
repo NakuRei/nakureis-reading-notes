@@ -12,18 +12,19 @@ export default async function Home() {
     <div>
       {books.map((book) => (
         <div key={book.id}>
-          <div className="flex card card-bordered  card-side bg-base-200 shadow-xl mx-[5%] my-10 p-5 pl-8">
+          <div className="flex card card-bordered md:card-side bg-base-200 shadow-xl mx-[5%] lg:mx-[15%] my-10 py-5 pr-0 pl-0 md:pl-8">
             <figure className="flex-shrink-0">
               <Image
                 src={book.image}
                 alt={`Cover of ${book.title}`}
                 width={128}
                 height={192}
+                className="w-32 h-44"
               />
             </figure>
             <div className="card-body flex-grow flex-shrink min-w-0">
               <h2 className="card-title">{book.title}</h2>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <div>
                   <p>
                     {book.publishedDate
