@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import getBooks from './_functions/getBooks';
+import formatDate from './_functions/formatDate';
 
 export default async function Home() {
   const books = await getBooks();
@@ -24,12 +25,19 @@ export default async function Home() {
             </figure>
             <div className="card-body flex-grow flex-shrink min-w-0">
               <h2 className="card-title">{book.title}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="flex flex-row gap-2">
+                {book.categories?.map((category) => (
+                  <div key={category} className="badge badge-secondary">
+                    {category}
+                  </div>
+                ))}
+              </div>
+              <div className="grid grid-cols-3 gap-2">
                 <div>
                   <p>
-                    {book.publishedDate
-                      ? `${book.publishedDate} 出版`
-                      : '出版日不明'}
+                    {book.finish
+                      ? `${formatDate(book.finish)} 読了`
+                      : '読了日不明'}
                   </p>
                 </div>
                 <div>
@@ -45,7 +53,7 @@ export default async function Home() {
               </div>
               <div className="card-actions justify-end">
                 <Link href={`/books/${book.isbn}`} className="btn btn-primary">
-                  Notes
+                  {book.chapterCount} Notes
                 </Link>
                 <a
                   href={book.affiliateUrl ?? rakutenBooksUrl}

@@ -1,5 +1,6 @@
 import getBooksApiGoogle from './getBooksApiGoogle';
 import getBooksApiRakuten from './getBooksApiRakuten';
+import getConfigFromYaml from './getConfigFromYaml';
 import getIsbnDirectories from './getIsbnDirectories';
 
 interface Book {
@@ -14,13 +15,18 @@ interface Book {
 
   affiliateUrl?: string;
   itemPrice?: number;
+
+  categories?: string[];
+  finish?: Date;
+  chapterCount?: number;
 }
 
 async function getBookInfo(isbn: string): Promise<Book | null> {
   try {
-    const [googleResult, rakutenResult] = await Promise.allSettled([
+    const [googleResult, rakutenResult, yamlResult] = await Promise.allSettled([
       getBooksApiGoogle(`isbn:${isbn}`),
       getBooksApiRakuten(isbn),
+      getConfigFromYaml(isbn),
     ]);
 
     const googleBook =
@@ -34,6 +40,9 @@ async function getBookInfo(isbn: string): Promise<Book | null> {
     if (!rakutenBook) {
       console.warn(`Rakuten API failed to retrieve book for ISBN: ${isbn}`);
     }
+    if (yamlResult.status === 'rejected') {
+      throw new Error(`Failed to read or parse config.yaml for ISBN: ${isbn}`);
+    }
 
     return {
       id: googleBook.id,
@@ -46,6 +55,9 @@ async function getBookInfo(isbn: string): Promise<Book | null> {
       image: googleBook.image,
       affiliateUrl: rakutenBook?.affiliateUrl,
       itemPrice: rakutenBook?.itemPrice,
+      categories: yamlResult.value.categories,
+      finish: yamlResult.value.finish,
+      chapterCount: yamlResult.value.chapterCount,
     };
   } catch (error) {
     console.error(`Failed to retrieve book for ISBN: ${isbn}`, error);
@@ -60,5 +72,16 @@ export default async function getBooks(): Promise<Book[]> {
   const bookInfos = await Promise.all(bookInfoPromises);
 
   // エラーを含む可能性のあるnullをフィルタリング
-  return bookInfos.filter((book): book is Book => book !== null);
+  const filteredBooks = bookInfos.filter((book): book is Book => book !== null);
+
+  // finishの日付が新しい順にソート
+  const sortedBooks = filteredBooks.sort((a, b) => {
+    // finishが未定義の場合、比較のために最古の日付を使用する
+    const dateA = a.finish || new Date(0);
+    const dateB = b.finish || new Date(0);
+    // 日付を比較してソート
+    return dateB.getTime() - dateA.getTime();
+  });
+
+  return sortedBooks;
 }
