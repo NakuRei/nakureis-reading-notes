@@ -30,8 +30,8 @@ export default function ToggleModeCheckbox() {
         onChange={toggleTheme}
         checked={theme === 'night'}
       />
-      <Sun className="swap-off" width="32" height="32" />
-      <Moon className="swap-on" width="32" height="32" />
+      <Sun className="swap-off" size={32} />
+      <Moon className="swap-on" size={32} />
     </label>
   );
 }
