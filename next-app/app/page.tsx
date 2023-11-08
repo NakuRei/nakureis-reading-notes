@@ -19,7 +19,7 @@ export default async function Home() {
                 src={book.image}
                 alt={`Cover of ${book.title}`}
                 width={128}
-                height={192}
+                height={182}
                 className="w-32 h-44"
               />
             </figure>

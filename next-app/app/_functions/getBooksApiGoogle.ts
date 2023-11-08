@@ -22,6 +22,7 @@ interface GoogleBookJson {
     }[];
     pageCount: number;
     imageLinks: {
+      smallThumbnail: string;
       thumbnail: string;
     };
   };
@@ -50,6 +51,10 @@ export default async function getBooksApiGoogle(
     );
     const isbn = isbn13?.identifier || isbn10?.identifier || '';
 
+    const thumbnail = elem.volumeInfo?.imageLinks?.thumbnail;
+    const smallThumbnail = elem.volumeInfo?.imageLinks?.smallThumbnail;
+    const image = smallThumbnail || thumbnail || '';
+
     return {
       id: elem.id,
       title: elem.volumeInfo?.title,
@@ -58,7 +63,7 @@ export default async function getBooksApiGoogle(
       description: elem.volumeInfo?.description,
       isbn: isbn,
       pageCount: elem.volumeInfo?.pageCount,
-      image: elem.volumeInfo?.imageLinks?.thumbnail,
+      image: image,
     };
   });
 }
