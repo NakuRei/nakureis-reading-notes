@@ -54,6 +54,7 @@ export default async function getBooksApiGoogle(
     const thumbnail = elem.volumeInfo?.imageLinks?.thumbnail;
     const smallThumbnail = elem.volumeInfo?.imageLinks?.smallThumbnail;
     const image = smallThumbnail || thumbnail || '';
+    const imageHttps = image.replace(/^http:/, 'https:');
 
     return {
       id: elem.id,
@@ -63,7 +64,7 @@ export default async function getBooksApiGoogle(
       description: elem.volumeInfo?.description,
       isbn: isbn,
       pageCount: elem.volumeInfo?.pageCount,
-      image: image,
+      image: imageHttps,
     };
   });
 }
