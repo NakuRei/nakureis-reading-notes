@@ -35,8 +35,8 @@ export default async function Home() {
               <div className="grid grid-cols-3 gap-2">
                 <div>
                   <p>
-                    {book.finish
-                      ? `${formatDate(book.finish)} 読了`
+                    {book.finishDate
+                      ? `${formatDate(book.finishDate)} 読了`
                       : '読了日不明'}
                   </p>
                 </div>
