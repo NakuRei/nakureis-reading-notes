@@ -4,13 +4,13 @@ import yaml from 'js-yaml';
 
 interface LocalConfigYaml {
   categories: string[];
-  finish: Date;
+  finishDate: Date;
   chapters: string[];
 }
 
 interface LocalBookConfig {
   categories: string[];
-  finish: Date;
+  finishDate: Date;
   chapterCount: number;
 }
 
@@ -34,12 +34,12 @@ export default async function getConfigFromYaml(
 
   // 必要なデータを抽出
   const categories = localBookData.categories;
-  const finish = localBookData.finish;
+  const finishDate = localBookData.finishDate;
   const chapterCount = localBookData.chapters.length;
 
   return {
     categories: categories,
-    finish: finish,
+    finishDate: finishDate,
     chapterCount: chapterCount,
   };
 }

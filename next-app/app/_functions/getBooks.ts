@@ -17,7 +17,7 @@ interface Book {
   itemPrice?: number;
 
   categories?: string[];
-  finish?: Date;
+  finishDate?: Date;
   chapterCount?: number;
 }
 
@@ -56,7 +56,7 @@ async function getBookInfo(isbn: string): Promise<Book | null> {
       affiliateUrl: rakutenBook?.affiliateUrl,
       itemPrice: rakutenBook?.itemPrice,
       categories: yamlResult.value.categories,
-      finish: yamlResult.value.finish,
+      finishDate: yamlResult.value.finishDate,
       chapterCount: yamlResult.value.chapterCount,
     };
   } catch (error) {
@@ -74,11 +74,11 @@ export default async function getBooks(): Promise<Book[]> {
   // エラーを含む可能性のあるnullをフィルタリング
   const filteredBooks = bookInfos.filter((book): book is Book => book !== null);
 
-  // finishの日付が新しい順にソート
+  // finishDateの日付が新しい順にソート
   const sortedBooks = filteredBooks.sort((a, b) => {
-    // finishが未定義の場合、比較のために最古の日付を使用する
-    const dateA = a.finish || new Date(0);
-    const dateB = b.finish || new Date(0);
+    // finishDateが未定義の場合、比較のために最古の日付を使用する
+    const dateA = a.finishDate || new Date(0);
+    const dateB = b.finishDate || new Date(0);
     // 日付を比較してソート
     return dateB.getTime() - dateA.getTime();
   });
