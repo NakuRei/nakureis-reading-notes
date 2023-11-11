@@ -12,19 +12,20 @@ export default async function Home() {
   return (
     <div>
       {books.map((book) => (
-        <div key={book.id}>
+        <div key={book.isbn}>
           <div className="flex card card-bordered md:card-side bg-base-200 shadow-xl mx-[5%] lg:mx-[15%] my-10 py-5 pr-0 pl-0 md:pl-8">
             <figure className="flex-shrink-0">
               <Image
                 src={book.image}
                 alt={`Cover of ${book.title}`}
-                width={128}
-                height={182}
-                className="w-32 h-44"
+                width={150}
+                height={210}
+                className="w-[150px] h-[210px]"
               />
             </figure>
             <div className="card-body flex-grow flex-shrink min-w-0">
               <h2 className="card-title">{book.title}</h2>
+              <p>{book.publisherName}</p>
               <div className="flex flex-row gap-2">
                 {book.categories?.map((category) => (
                   <div key={category} className="badge badge-secondary">
@@ -32,7 +33,7 @@ export default async function Home() {
                   </div>
                 ))}
               </div>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 <div>
                   <p>
                     {book.finishDate
@@ -53,7 +54,7 @@ export default async function Home() {
               </div>
               <div className="card-actions justify-end">
                 <Link href={`/books/${book.isbn}`} className="btn btn-primary">
-                  {book.chapterCount} Notes
+                  {book.chapters.length} Notes
                 </Link>
                 <a
                   href={book.affiliateUrl ?? rakutenBooksUrl}

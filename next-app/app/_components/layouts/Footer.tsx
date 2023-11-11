@@ -17,7 +17,6 @@ export default function Footer(props: FooterProps) {
         <p>
           © {props.year} {props.authorName}
         </p>
-
         {/* <!-- Rakuten Web Services Attribution Snippet FROM HERE --> */}
         <a
           href="https://developers.rakuten.com/"
