@@ -21,14 +21,31 @@ export default function ToggleModeCheckbox() {
     setTheme(theme === 'night' ? 'cupcake' : 'night');
   }
 
+  const isNightMode = theme === 'night';
+  const labelDescription = isNightMode
+    ? 'ダークモードをオフにする'
+    : 'ダークモードをオンにする';
+
   return (
-    <label className="btn btn-circle btn-ghost swap swap-rotate">
+    <label
+      className="swap swap-rotate"
+      htmlFor="themeToggle"
+      aria-label={labelDescription}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          toggleTheme();
+        }
+      }}
+    >
+      <span className="sr-only">{labelDescription}</span>
       <input
         type="checkbox"
         id="themeToggle"
         name="themeToggle"
         onChange={toggleTheme}
-        checked={theme === 'night'}
+        checked={isNightMode}
+        role="checkbox"
+        aria-checked={isNightMode}
       />
       <Sun className="swap-off" size={32} />
       <Moon className="swap-on" size={32} />
