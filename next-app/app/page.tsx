@@ -26,7 +26,7 @@ export default async function Home() {
             </figure>
             <div className="card-body flex-grow flex-shrink min-w-0">
               <h2 className="card-title">{book.title}</h2>
-              <p>{book.publisherName}</p>
+              <p className="text-sm">{book.publisherName}</p>
               <div className="flex flex-row gap-2">
                 {book.categories?.map((category) => (
                   <div key={category} className="badge badge-secondary">
@@ -34,7 +34,7 @@ export default async function Home() {
                   </div>
                 ))}
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
                 <div>
                   <p>
                     {book.finishDate
