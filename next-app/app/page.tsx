@@ -21,6 +21,7 @@ export default async function Home() {
                 width={150}
                 height={210}
                 className="w-[150px] h-[210px]"
+                priority={true}
               />
             </figure>
             <div className="card-body flex-grow flex-shrink min-w-0">
