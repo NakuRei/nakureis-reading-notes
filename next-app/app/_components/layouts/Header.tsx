@@ -42,8 +42,8 @@ export default function Header(props: HeaderProps) {
         <div className="navbar-end mr-3">
           <label className="swap swap-rotate mr-3">
             <input type="checkbox" onChange={changeShow} checked={isHome} />
-            <SquaresFour className="swap-off" size={32} />
-            <SquareSplitVertical className="swap-on" size={32} />
+            <SquareSplitVertical className="swap-off" size={32} />
+            <SquaresFour className="swap-on" size={32} />
           </label>
           <ToggleModeCheckbox />
         </div>
