@@ -55,7 +55,7 @@ export default async function Home() {
               </div>
               <div className="card-actions justify-end">
                 <Link href={`/books/${book.isbn}`} className="btn btn-primary">
-                  {book.chapters.length} Notes
+                  {book.chapters ? book.chapters.length : 0} Notes
                 </Link>
                 <a
                   href={book.affiliateUrl ?? rakutenBooksUrl}
