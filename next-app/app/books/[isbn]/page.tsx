@@ -11,7 +11,7 @@ interface Params {
   isbn: string;
 }
 
-export default function Page({ params }: { params: Params }) {
+export default function BookPage({ params }: { params: Params }) {
   const { isbn } = params;
   return (
     <div>
