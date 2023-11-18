@@ -24,6 +24,10 @@ export interface Book {
   chapters: string[];
 }
 
+function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 const bookInfoCache: { [isbnJan: string]: Book } = {};
 
 export async function getBookInfo(isbn: string): Promise<Book | null> {
@@ -31,6 +35,7 @@ export async function getBookInfo(isbn: string): Promise<Book | null> {
     return bookInfoCache[isbn];
   }
 
+  await delay(1100);
   try {
     const [rakutenResult, yamlResult] = await Promise.allSettled([
       getBooksApiRakuten(isbn),
