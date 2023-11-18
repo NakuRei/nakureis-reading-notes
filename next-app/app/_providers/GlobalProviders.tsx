@@ -10,7 +10,7 @@ export default function GlobalProviders({
 }) {
   return (
     <>
-      <ThemeProvider defaultTheme="night" themes={['cupcake', 'night']}>
+      <ThemeProvider defaultTheme="cupcake" themes={['cupcake', 'night']}>
         {children}
       </ThemeProvider>
     </>
