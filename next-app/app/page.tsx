@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <div className="flex justify-center">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-[90%] px-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 max-w-[90%] px-10">
         {books.map((book) => (
           <div
             key={book.isbn}
