@@ -7,7 +7,7 @@ import getIsbnDirectories from './getIsbnDirectories';
 
 import formatDate from './formatDate';
 
-interface Book {
+export interface Book {
   isbn: string;
   title: string;
   authors: string[];
@@ -24,7 +24,13 @@ interface Book {
   chapters: string[];
 }
 
-async function getBookInfo(isbn: string): Promise<Book | null> {
+const bookInfoCache: { [isbnJan: string]: Book } = {};
+
+export async function getBookInfo(isbn: string): Promise<Book | null> {
+  if (bookInfoCache[isbn]) {
+    return bookInfoCache[isbn];
+  }
+
   try {
     const [rakutenResult, yamlResult] = await Promise.allSettled([
       getBooksApiRakuten(isbn),
@@ -53,7 +59,7 @@ async function getBookInfo(isbn: string): Promise<Book | null> {
       ? `/books/${isbn}/cover.webp`
       : rakutenBook.imageUrl || defaultCoverPath;
 
-    return {
+    const bookInfo = {
       isbn: isbn,
       title: yamlResult.value.title || rakutenBook.title,
       authors: yamlResult.value.authors || rakutenBook.author.split('/'),
@@ -70,6 +76,9 @@ async function getBookInfo(isbn: string): Promise<Book | null> {
       finishDate: yamlResult.value.finishDate,
       chapters: yamlResult.value.chapters,
     };
+
+    bookInfoCache[isbn] = bookInfo;
+    return bookInfo;
   } catch (error) {
     console.error(`Failed to retrieve book for ISBN: ${isbn}`, error);
     return null; // エラーが起きた場合にnullを返す
