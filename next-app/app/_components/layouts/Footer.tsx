@@ -12,7 +12,7 @@ interface FooterProps {
 
 export default function Footer(props: FooterProps) {
   return (
-    <footer className={`${props.className} footer items-center p-4`}>
+    <footer className={`${props.className} footer items-center p-4 gap-1`}>
       <aside className="items-center grid-flow-row">
         <p>
           © {props.year} {props.authorName}
