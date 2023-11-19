@@ -2,9 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-import getBooksDirPath from './getBooksDirPath';
-
 interface LocalConfigYaml {
+  isbn: string;
   title: string;
   authors: string[];
   publisherName: string;
@@ -13,45 +12,49 @@ interface LocalConfigYaml {
   pageCount: number;
   categories: string[];
   finishDate: Date;
+  buyUrl: string;
   chapters: string[];
 }
 
 interface LocalBookConfig {
+  isbn: string;
   title: string;
   authors: string[];
   publisherName: string;
   publishedDate: Date;
-  pageCount: number;
   itemPrice: number;
+  pageCount: number;
   categories: string[];
   finishDate: Date;
+  buyUrl: string;
   chapters: string[];
 }
 
 export default async function getConfigFromYaml(
-  isbn: string,
+  bookDirPath: string,
 ): Promise<LocalBookConfig> {
-  const booksDirPath = getBooksDirPath();
-  const contentsPath = path.join(booksDirPath, `${isbn}/config.yaml`);
+  const yamlPath = path.join(bookDirPath, 'config.yaml');
   let localBookData: LocalConfigYaml;
   try {
     localBookData = yaml.load(
-      fs.readFileSync(contentsPath, 'utf8'),
+      fs.readFileSync(yamlPath, 'utf8'),
     ) as LocalConfigYaml;
   } catch (e) {
-    console.error(`Failed to read or parse config.yaml for ISBN: ${isbn}`, e);
-    throw new Error(`Failed to read or parse config.yaml for ISBN: ${isbn}`);
+    console.error(`Failed to read or parse config.yaml: ${yamlPath}`, e);
+    throw new Error(`Failed to read or parse config.yaml: ${yamlPath}`);
   }
 
   return {
+    isbn: localBookData.isbn,
     title: localBookData.title,
     authors: localBookData.authors,
     publisherName: localBookData.publisherName,
     publishedDate: localBookData.publishedDate,
-    pageCount: localBookData.pageCount,
     itemPrice: localBookData.itemPrice,
+    pageCount: localBookData.pageCount,
     categories: localBookData.categories,
     finishDate: localBookData.finishDate,
+    buyUrl: localBookData.buyUrl,
     chapters: localBookData.chapters,
   };
 }

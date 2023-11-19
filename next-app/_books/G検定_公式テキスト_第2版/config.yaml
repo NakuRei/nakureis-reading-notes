@@ -1,3 +1,4 @@
+isbn: '9784798165943'
 title: '深層学習教科書 ディープラーニング G検定（ジェネラリスト）公式テキスト 第2版'
 authors:
   [
@@ -20,8 +21,9 @@ publisherName: '翔泳社'
 publishedDate: 2021-04-27
 itemPrice: 3080
 pageCount: 404
-categories: [DNN, 資格試験]
-finishDate: 2023-08-01
+categories: ['DNN', '資格試験']
+finishDate:
+buyUrl: 'https://hb.afl.rakuten.co.jp/hgc/g00q072a.84u5t82d.g00q072a.84u5u12d/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16665998%2F'
 
 chapters:
   - about
