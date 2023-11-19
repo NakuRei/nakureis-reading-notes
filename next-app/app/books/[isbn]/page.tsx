@@ -1,22 +1,24 @@
-import getIsbnDirectories from '@/app/_functions/getIsbnDirectories';
+import getBooks from '@/app/_functions/getBooks';
+import { getBookByISBN } from '@/app/_functions/getBook';
 
 export async function generateStaticParams() {
-  const isbnDirectories = getIsbnDirectories();
-  return isbnDirectories.map((isbn) => ({
-    isbn: isbn,
-  }));
+  const books = await getBooks();
+  return books.map((book) => ({ isbn: String(book?.isbn) }));
 }
 
 interface Params {
   isbn: string;
 }
 
-export default function BookPage({ params }: { params: Params }) {
-  const { isbn } = params;
+export default async function Page({ params }: { params: Params }) {
+  const book = await getBookByISBN(params.isbn);
+
   return (
     <div>
       <h2>Book</h2>
-      <p>ISBN: {isbn}</p>
+      <p>ISBN: {params.isbn}</p>
+      <p>Title: {book?.title}</p>
+      <p>Categories: {book?.categories}</p>
     </div>
   );
 }

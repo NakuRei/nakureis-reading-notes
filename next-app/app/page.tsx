@@ -26,7 +26,7 @@ export default async function Home() {
                   height={210}
                   priority={true}
                   className="h-[105px] sm:h-[140px] w-auto"
-                ></Image>
+                />
               </figure>
               <h2 className="card-title text-sm">{book.title}</h2>
             </div>
@@ -43,7 +43,7 @@ export default async function Home() {
                 <p className="text-sm">
                   {book.finishDate
                     ? `${formatDate(book.finishDate)} 読了`
-                    : '読了日不明'}
+                    : '読書中'}
                 </p>
               </div>
               <div className="flex flex-row justify-end gap-2">
@@ -54,7 +54,7 @@ export default async function Home() {
                   {book.chapters ? book.chapters.length : 0} Notes
                 </Link>
                 <a
-                  href={book.affiliateUrl ?? rakutenBooksUrl}
+                  href={book.buyUrl ?? rakutenBooksUrl}
                   className="btn btn-sm btn-accent"
                   target="_blank"
                   rel="noopener"
