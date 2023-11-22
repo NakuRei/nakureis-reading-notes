@@ -34,9 +34,7 @@ export default function RootLayout({
             homePath="/"
             className="bg-base-300 text-base-content"
           />
-          <main className="flex-1 overflow-x-hidden overflow-y-scroll">
-            {children}
-          </main>
+          <main className="flex-1 overflow-y-auto">{children}</main>
           <Footer
             authorName="NakuRei"
             year={2023}
