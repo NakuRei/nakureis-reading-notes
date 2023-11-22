@@ -42,8 +42,10 @@ export default async function Article({ params }: { params: Params }) {
   }
   const markdown = await getMarkdownContent(book?.dirPath, params.chapter);
   return (
-    <article className="max-w-4xl w-[90%] mx-auto my-10">
-      <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
-    </article>
+    <div className="max-w-4xl w-[90%] mx-auto my-10">
+      <article className="prose prose-sm md:prose-base prose-strong:text-primary">
+        <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
+      </article>
+    </div>
   );
 }
