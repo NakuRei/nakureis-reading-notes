@@ -1,9 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import Markdown from 'react-markdown';
+import ReactMarkdown, { ExtraProps } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 import getBooks from '@/app/_functions/getBooks';
@@ -35,17 +36,83 @@ interface Params {
   chapter: string;
 }
 
+function TocContent(props: JSX.IntrinsicElements['h2'] & ExtraProps) {
+  const title =
+    props.node && 'value' in props.node.children[0]
+      ? props.node.children[0].value
+      : '';
+  return (
+    <li>
+      <Link href={`#${title}`} className="text-sm">
+        {props.children}
+      </Link>
+    </li>
+  );
+}
+
+function customH2(props: JSX.IntrinsicElements['h2'] & ExtraProps) {
+  const title =
+    props.node && 'value' in props.node.children[0]
+      ? props.node.children[0].value
+      : '';
+  return (
+    <Link className="text-inherit no-underline" id={title} href={`#${title}`}>
+      <h2>{props.children}</h2>
+    </Link>
+  );
+}
+
 export default async function Article({ params }: { params: Params }) {
   const book = await getBookByISBN(params.isbn);
   if (!book) {
     notFound();
   }
-  const markdown = await getMarkdownContent(book?.dirPath, params.chapter);
+
+  const markdownContents = book?.chapters.map((chapter) => ({
+    chapter: chapter,
+    contents: getMarkdownContent(book?.dirPath, chapter),
+  }));
+  const markdown = markdownContents.filter(
+    (contents) => contents.chapter === params.chapter,
+  )[0].contents;
+
   return (
-    <div className="max-w-4xl w-[90%] mx-auto my-10">
-      <article className="prose prose-sm md:prose-base prose-strong:text-primary">
-        <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
-      </article>
+    <div className="flex flex-row gap-10 p-10 w-full justify-center">
+      <div className="flex flex-col md:flex-row gap-10">
+        <div className="md:hidden collapse collapse-arrow bg-base-200 border border-base-300 max-h-64">
+          <input type="checkbox" />
+          <div className="collapse-title">目次（タップで移動）</div>
+          <div className="collapse-content overflow-auto">
+            <ReactMarkdown
+              allowedElements={['h2']}
+              components={{ h2: TocContent }}
+            >
+              {markdown}
+            </ReactMarkdown>
+          </div>
+        </div>
+
+        <article className="prose prose-sm md:prose-base prose-strong:text-primary max-md:max-w-none">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{ h2: customH2 }}
+          >
+            {markdown}
+          </ReactMarkdown>
+        </article>
+
+        <div className="max-md:hidden sticky top-10 min-w-[250px] max-w-[250px] h-max max-h-[50vh] overflow-y-auto bg-base-200 rounded-lg p-4">
+          <div className="text-base font-bold">目次</div>
+          <div className="px-0 pt-2">
+            <ReactMarkdown
+              allowedElements={['h2']}
+              components={{ h2: TocContent }}
+            >
+              {markdown}
+            </ReactMarkdown>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
