@@ -1,5 +1,8 @@
-'use client';
-import { GithubLogo, NotePencil, TwitterLogo } from '@phosphor-icons/react';
+import {
+  GithubLogo,
+  NotePencil,
+  TwitterLogo,
+} from '@phosphor-icons/react/dist/ssr';
 
 import IconLinkButton from './IconLinkButton';
 import ZennLogoButton from './ZennLogoButton';
