@@ -72,16 +72,16 @@ export default async function Article({ params }: { params: Params }) {
     chapter: chapter,
     contents: getMarkdownContent(book?.dirPath, chapter),
   }));
-  const markdown = markdownContents.filter(
+  const markdown = markdownContents.find(
     (contents) => contents.chapter === params.chapter,
-  )[0].contents;
+  )?.contents;
 
   return (
     <div className="flex flex-row gap-10 p-10 w-full justify-center">
-      <div className="flex flex-col md:flex-row gap-10">
-        <div className="md:hidden collapse collapse-arrow bg-base-200 border border-base-300 max-h-64">
+      <div className="flex flex-col lg:flex-row gap-10">
+        <div className="lg:hidden collapse collapse-arrow bg-base-200 border border-base-300 max-h-64">
           <input type="checkbox" />
-          <div className="collapse-title">目次（タップで移動）</div>
+          <div className="collapse-title">目次</div>
           <div className="collapse-content overflow-auto">
             <ReactMarkdown
               allowedElements={['h2']}
@@ -101,7 +101,7 @@ export default async function Article({ params }: { params: Params }) {
           </ReactMarkdown>
         </article>
 
-        <div className="max-md:hidden sticky top-10 min-w-[250px] max-w-[250px] h-max max-h-[50vh] overflow-y-auto bg-base-200 rounded-lg p-4">
+        <div className="max-lg:hidden sticky top-10 min-w-[250px] max-w-[250px] h-max max-h-[50vh] overflow-y-auto bg-base-200 rounded-lg p-4">
           <div className="text-base font-bold">目次</div>
           <div className="px-0 pt-2">
             <ReactMarkdown
