@@ -39,7 +39,7 @@ export async function getBookInfo(bookDirPath: string): Promise<Book | null> {
     );
     const defaultCoverPath = '/static/images/book-cover.webp';
     const image = fs.existsSync(coverImagePath)
-      ? `${bookDirPath}/cover.webp`
+      ? `/${bookDirPath}/cover.webp`
       : defaultCoverPath;
 
     return {
