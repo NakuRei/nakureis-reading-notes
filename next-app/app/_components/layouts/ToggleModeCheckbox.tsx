@@ -4,7 +4,12 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from '@phosphor-icons/react';
 
-export default function ToggleModeCheckbox() {
+interface ToggleModeCheckboxProps {
+  size?: number;
+  className?: string;
+}
+
+export default function ToggleModeCheckbox(props: ToggleModeCheckboxProps) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -28,7 +33,7 @@ export default function ToggleModeCheckbox() {
 
   return (
     <label
-      className="swap swap-rotate"
+      className={`swap swap-rotate ${props.className}`}
       htmlFor="themeToggle"
       aria-label={labelDescription}
       onKeyDown={(e) => {
@@ -47,8 +52,8 @@ export default function ToggleModeCheckbox() {
         role="checkbox"
         aria-checked={isNightMode}
       />
-      <Sun className="swap-off" size={32} />
-      <Moon className="swap-on" size={32} />
+      <Sun className="swap-off" size={props.size ?? 24} />
+      <Moon className="swap-on" size={props.size ?? 24} />
     </label>
   );
 }

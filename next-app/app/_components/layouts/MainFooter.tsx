@@ -7,18 +7,18 @@ import {
 import IconLinkButton from './IconLinkButton';
 import ZennLogoButton from './ZennLogoButton';
 
-interface FooterProps {
-  authorName: string;
+interface MainFooterProps {
   year: number;
   className?: string;
 }
 
-export default function Footer(props: FooterProps) {
+export default function MainFooter(props: MainFooterProps) {
+  const authorName = 'NakuRei';
   return (
     <footer className={`${props.className} footer items-center p-4 gap-1`}>
       <aside className="items-center grid-flow-row">
         <p>
-          © {props.year} {props.authorName}
+          © {props.year} {authorName}
         </p>
         {/* <!-- Rakuten Web Services Attribution Snippet FROM HERE --> */}
         <a
@@ -26,6 +26,7 @@ export default function Footer(props: FooterProps) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Supported by Rakuten Developers"
+          className="text-xs"
         >
           Supported by Rakuten Developers
         </a>

@@ -3,7 +3,8 @@ import Link from 'next/link';
 
 import ReactMarkdown from 'react-markdown';
 
-import { Book } from '@/app/_functions/getBooks';
+import MainHeader from '@/app/_components/layouts/MainHeader';
+import Book from '@/app/_types/Book';
 
 interface BookChaptersMenuProps {
   book: Book;
@@ -18,8 +19,9 @@ interface BookChaptersMenuProps {
 export default function BookChaptersMenu(props: BookChaptersMenuProps) {
   return (
     <div
-      className={`${props.className} h-full overflow-y-auto w-64 max-w-[70%] bg-base-200 text-base-content`}
+      className={`h-full overflow-y-auto w-64 bg-base-200 text-base-content ${props.className}`}
     >
+      <MainHeader />
       <ul className="menu">
         <li>
           <Link

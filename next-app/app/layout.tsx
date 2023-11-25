@@ -4,8 +4,7 @@ import './globals.css';
 
 import GlobalProviders from './_providers/GlobalProviders';
 
-import Header from './_components/layouts/Header';
-import Footer from './_components/layouts/Footer';
+import MainFooter from './_components/layouts/MainFooter';
 
 const notoSansJp = Noto_Sans_JP({
   display: 'swap',
@@ -24,22 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang="ja" suppressHydrationWarning className="max-lg:scroll-pt-20">
       <body
-        className={`${notoSansJp.className} flex flex-col h-screen w-screen`}
+        className={`${notoSansJp.className} grid grid-rows-[1fr_auto] min-h-[100svh] w-full`}
       >
         <GlobalProviders>
-          <Header
-            appName={metadata.title?.toString() ?? 'NakuRei'}
-            homePath="/"
-            className="bg-base-300 text-base-content"
-          />
-          <main className="flex-1 overflow-y-auto">{children}</main>
-          <Footer
-            authorName="NakuRei"
-            year={2023}
-            className="bg-base-300 text-base-content"
-          />
+          {children}
+          <MainFooter year={2023} className="bg-neutral text-neutral-content" />
         </GlobalProviders>
       </body>
     </html>

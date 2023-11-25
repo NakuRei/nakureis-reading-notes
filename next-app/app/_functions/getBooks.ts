@@ -4,22 +4,7 @@ import path from 'path';
 import getConfigFromYaml from './getConfigFromYaml';
 import getBookDirs from './getBookDirs';
 import formatDate from './formatDate';
-
-export interface Book {
-  isbn: string;
-  dirPath: string;
-  title: string;
-  authors: string[];
-  publisherName: string;
-  publishedDate: string;
-  itemPrice: number;
-  image: string;
-  buyUrl: string;
-  pageCount: number;
-  categories: string[];
-  finishDate: Date;
-  chapters: string[];
-}
+import Book from '../_types/Book';
 
 export async function getBookInfo(bookDirPath: string): Promise<Book | null> {
   try {

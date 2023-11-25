@@ -1,23 +1,13 @@
-import fs from 'fs';
-import path from 'path';
-import React from 'react';
 import { notFound } from 'next/navigation';
 
-import { Book } from '@phosphor-icons/react/dist/ssr';
+import ReactMarkdown from 'react-markdown';
+import { BookBookmark, BookmarksSimple } from '@phosphor-icons/react/dist/ssr';
 
-import { getBookByISBN } from '@/app/_functions/getBook';
+import MainHeader from '@/app/_components/layouts/MainHeader';
 import BookChaptersMenu from '@/app/_components/chapter/BookChaptersMenu';
-
-function getMarkdownContent(dirPath: string, chapter: string) {
-  try {
-    const markdownPath = path.join(process.cwd(), dirPath, `${chapter}.md`);
-    const markdownContent = fs.readFileSync(markdownPath, 'utf8');
-    return markdownContent;
-  } catch (error) {
-    console.error('Error reading markdown file:', error);
-    return null;
-  }
-}
+import TocLinkLi from '@/app/_components/markdown/TocLinkLi';
+import { getBookByISBN } from '@/app/_functions/getBook';
+import getMarkdownContent from '@/app/_functions/getMarkdownContent';
 
 export default async function ArticleLayout({
   children,
@@ -34,52 +24,72 @@ export default async function ArticleLayout({
     notFound();
   }
 
+  const markdown = getMarkdownContent(book.dirPath, params.chapter);
+
   const markdownContents = book?.chapters.map((chapter) => ({
     chapter: chapter,
     contents: getMarkdownContent(book?.dirPath, chapter),
   }));
 
   return (
-    <div className="h-full w-full">
-      <div className="max-lg:hidden flex flex-row h-full w-full">
+    <div className="drawer lg:drawer-open">
+      <input
+        id="bookChaptersMenuDrawer"
+        type="checkbox"
+        className="drawer-toggle"
+      />
+      <div className="drawer-content flex flex-col items-center w-full">
+        {/* Page content here */}
+        <MainHeader
+          className="lg:hidden sticky top-0"
+          buttons={
+            <>
+              <label
+                htmlFor="bookChaptersMenuDrawer"
+                aria-label="open sidebar"
+                className="btn btn-circle btn-ghost"
+              >
+                <BookBookmark size={24} />
+              </label>
+              <div className="dropdown dropdown-bottom dropdown-end mr-3">
+                <label tabIndex={0} className="btn btn-ghost btn-circle">
+                  <BookmarksSimple size={24} />
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-200 text-base-content rounded-box w-64"
+                >
+                  <li>
+                    <h2 className="menu-title">目次</h2>
+                    <ul>
+                      <ReactMarkdown
+                        allowedElements={['h2']}
+                        components={{ h2: TocLinkLi }}
+                      >
+                        {markdown}
+                      </ReactMarkdown>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </>
+          }
+        />
+        <main className="w-full">{children}</main>
+      </div>
+      <div className="drawer-side">
+        <label
+          htmlFor="bookChaptersMenuDrawer"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        />
+
+        {/* Sidebar content here */}
         <BookChaptersMenu
-          nowChapter={params.chapter}
           book={book}
+          nowChapter={params.chapter}
           markdownContents={markdownContents}
         />
-        <div className="flex-1 overflow-y-auto">{children}</div>
-      </div>
-      <div className="lg:hidden drawer">
-        <input
-          id="bookChaptersMenuDrawer"
-          type="checkbox"
-          className="drawer-toggle"
-        />
-        <div className="drawer-content">
-          {/* Page content here */}
-          <div className="flex flex-row gap-5 sticky top-2 mx-10">
-            <label
-              htmlFor="bookChaptersMenuDrawer"
-              className="btn btn-sm btn-neutral btn-outline bg-base-200"
-            >
-              <Book size={32} />本
-            </label>
-          </div>
-          <div className="flex-1 overflow-y-auto">{children}</div>
-        </div>
-        <div className="drawer-side">
-          <label
-            htmlFor="bookChaptersMenuDrawer"
-            aria-label="close sidebar"
-            className="drawer-overlay"
-          />
-          {/* Sidebar content here */}
-          <BookChaptersMenu
-            book={book}
-            nowChapter={params.chapter}
-            markdownContents={markdownContents}
-          />
-        </div>
       </div>
     </div>
   );

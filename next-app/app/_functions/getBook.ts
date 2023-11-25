@@ -1,4 +1,5 @@
-import getBooks, { Book } from './getBooks';
+import getBooks from './getBooks';
+import Book from '../_types/Book';
 
 export async function getBookByISBN(isbn: string): Promise<Book | null> {
   const books = await getBooks();

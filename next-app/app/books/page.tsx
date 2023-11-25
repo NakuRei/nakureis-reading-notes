@@ -1,31 +1,16 @@
-import Image from 'next/image';
-import Link from 'next/link';
-
+import MainHeader from '@/app/_components/layouts/MainHeader';
+import BookImageCards from '@/app/_components/home/BookImageCards';
 import getBooks from '@/app/_functions/getBooks';
 
 export default async function BooksPage() {
   const books = await getBooks();
 
   return (
-    <div className="flex justify-center">
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-[5%] md:gap-[5%] lg:gap-10 mx-7 sm:mx-20 lg:mx-20 my-[5%] md:my-7 lg:my-10 max-w-[1024px]">
-        {books.map((book) => (
-          <Link key={book.isbn} href={`/books/${book.isbn}`}>
-            <div className="flex flex-col justify-center items-center rounded-lg shadow-md shadow-neutral-600 overflow-hidden">
-              <figure>
-                <Image
-                  src={book.image}
-                  alt={`Cover of ${book.title}`}
-                  width={150}
-                  height={210}
-                  priority={true}
-                  className="h-auto w-auto object-contain"
-                ></Image>
-              </figure>
-            </div>
-          </Link>
-        ))}
-      </div>
+    <div>
+      <MainHeader className="sticky top-0" />;
+      <main>
+        <BookImageCards books={books} />
+      </main>
     </div>
   );
 }
