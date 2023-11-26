@@ -32,7 +32,7 @@ function BookInfoCard(props: BookInfoCardProps) {
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-2">
           {book.categories?.map((category) => (
-            <div key={category} className="badge badge-secondary">
+            <div key={category} className="badge badge-secondary min-w-max">
               {category}
             </div>
           ))}
@@ -43,7 +43,10 @@ function BookInfoCard(props: BookInfoCardProps) {
           </p>
         </div>
         <div className="flex flex-row justify-end gap-2">
-          <Link href={`/books/${book.isbn}`} className="btn btn-sm btn-primary">
+          <Link
+            href={`/books/${book.isbn}`}
+            className="btn btn-sm btn-primary min-w-max"
+          >
             {book.chapters ? book.chapters.length : 0} Notes
           </Link>
           <a
