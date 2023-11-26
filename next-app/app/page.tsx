@@ -1,9 +1,10 @@
-import { Book, SquaresFour } from '@phosphor-icons/react/dist/ssr';
+import { Book, SquaresFour, Table } from '@phosphor-icons/react/dist/ssr';
 
 import MainHeader from './_components/layouts/MainHeader';
 import TabSwitcher from '@/app/_components/home/TabSwitcher';
 import BookInfoCards from '@/app/_components/home/BookInfoCards';
 import BookImageCards from '@/app/_components/home/BookImageCards';
+import BooksTable from '@/app/_components/home/BooksTable';
 import getBooks from '@/app/_functions/getBooks';
 
 export default async function Home() {
@@ -26,6 +27,11 @@ export default async function Home() {
               name: 'Books',
               content: <BookImageCards books={books} />,
               icon: <Book size={20} />,
+            },
+            {
+              name: 'Table',
+              content: <BooksTable books={books} />,
+              icon: <Table size={20} />,
             },
           ]}
         />
