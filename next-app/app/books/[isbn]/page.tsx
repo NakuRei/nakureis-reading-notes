@@ -70,7 +70,24 @@ export default async function Page({ params }: { params: Params }) {
                   </tr>
                   <tr>
                     <th>ページ数</th>
-                    <td>{book.pageCount ?? '不明'}</td>
+                    <td>
+                      {book.pageCount ? `${book.pageCount} ページ` : '不明'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>カテゴリ</th>
+                    <td>
+                      <div className="flex flex-row gap-2">
+                        {book.categories?.map((category) => (
+                          <div
+                            key={category}
+                            className="badge badge-secondary min-w-max badge-sm"
+                          >
+                            {category}
+                          </div>
+                        ))}
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <th>購入価格</th>
