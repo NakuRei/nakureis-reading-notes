@@ -33,7 +33,7 @@ export default async function Article({ params }: { params: ArticleParams }) {
   const markdown = getMarkdownContent(book.dirPath, params.chapter);
 
   return (
-    <div className="w-full flex flex-row justify-center gap-10 p-10">
+    <div className="w-full flex flex-row justify-center gap-10 xl:gap-20 p-10">
       <article className="prose prose-sm md:prose-base prose-strong:text-primary max-md:max-w-none w-full">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
