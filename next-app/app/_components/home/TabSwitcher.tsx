@@ -1,11 +1,11 @@
 'use client';
-import React, { useState, ReactNode } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface TabButtonProps {
   text: string;
   isActive: boolean;
   activateFunction: () => void;
-  icon?: ReactNode;
+  icon?: React.ReactNode;
   activeClass?: string;
   className?: string;
 }
@@ -27,8 +27,8 @@ function TabButton(props: TabButtonProps) {
 
 interface Tab {
   name: string;
-  content: ReactNode;
-  icon?: ReactNode;
+  content: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 interface TabSwitcherProps {
@@ -40,10 +40,26 @@ interface TabSwitcherProps {
 export default function TabSwitcher(props: TabSwitcherProps) {
   const [activeTab, setActiveTab] = useState<string>(props.tabs[0].name);
 
-  const content: { [key: string]: ReactNode } = {};
+  const content: { [key: string]: React.ReactNode } = {};
   props.tabs.forEach((tab) => {
     content[tab.name] = tab.content;
   });
+
+  // コンポーネントがマウントされたときにローカルストレージから状態を読み込む
+  useEffect(() => {
+    const storedActiveTab = localStorage.getItem('activeTab');
+    if (
+      storedActiveTab &&
+      props.tabs.some((tab) => tab.name === storedActiveTab)
+    ) {
+      setActiveTab(storedActiveTab);
+    }
+  }, [props.tabs]);
+
+  // activeTabが変更されたらローカルストレージを更新する
+  useEffect(() => {
+    localStorage.setItem('activeTab', activeTab);
+  }, [activeTab]);
 
   return (
     <>
