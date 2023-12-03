@@ -22,10 +22,20 @@ export async function getBookInfo(bookDirPath: string): Promise<Book | null> {
       bookDirPath,
       'cover.webp',
     );
-    const defaultCoverPath = '/static/images/book-cover.webp';
-    const image = fs.existsSync(coverImagePath)
+    const defaultCoverImagePath = '/static/images/book-cover.webp';
+    const coverImage = fs.existsSync(coverImagePath)
       ? `/${bookDirPath}/cover.webp`
-      : defaultCoverPath;
+      : defaultCoverImagePath;
+
+    const spineImagePath = path.join(
+      process.cwd(),
+      'public',
+      bookDirPath,
+      'spine.webp',
+    );
+    const spineImage = fs.existsSync(spineImagePath)
+      ? `/${bookDirPath}/spine.webp`
+      : null;
 
     return {
       isbn: yamlResult.value.isbn,
@@ -35,7 +45,8 @@ export async function getBookInfo(bookDirPath: string): Promise<Book | null> {
       publisherName: yamlResult.value.publisherName,
       publishedDate: formatDate(yamlResult.value.publishedDate),
       itemPrice: yamlResult.value.itemPrice,
-      image: image,
+      coverImage: coverImage,
+      spineImage: spineImage,
       buyUrl: yamlResult.value.buyUrl,
       pageCount: yamlResult.value.pageCount,
       categories: yamlResult.value.categories,

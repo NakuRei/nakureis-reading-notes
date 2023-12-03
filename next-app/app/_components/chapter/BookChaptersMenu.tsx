@@ -30,7 +30,7 @@ export default function BookChaptersMenu(props: BookChaptersMenuProps) {
           >
             <figure>
               <Image
-                src={props.book.image}
+                src={props.book.coverImage}
                 alt={`Cover of ${props.book.title}`}
                 width={150}
                 height={210}

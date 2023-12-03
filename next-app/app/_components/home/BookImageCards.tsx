@@ -18,7 +18,7 @@ export default function BookImageCards(props: BookImageCardsProps) {
             <div className="flex flex-col justify-center items-center rounded-lg shadow-md shadow-neutral-600 overflow-hidden">
               <figure>
                 <Image
-                  src={book.image}
+                  src={book.coverImage}
                   alt={`Cover of ${book.title}`}
                   width={150}
                   height={210}

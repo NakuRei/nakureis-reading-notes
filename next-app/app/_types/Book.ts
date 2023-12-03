@@ -6,7 +6,8 @@ type Book = {
   publisherName: string;
   publishedDate: string;
   itemPrice: number;
-  image: string;
+  coverImage: string;
+  spineImage: string | null;
   buyUrl: string;
   pageCount: number;
   categories: string[];

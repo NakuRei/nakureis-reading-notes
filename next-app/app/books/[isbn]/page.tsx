@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Params }) {
         <div className="flex flex-col sm:flex-row gap-5 sm:gap-10 w-full max-w-4xl">
           <figure className="flex-shrink-0 max-sm:flex max-sm:justify-center">
             <Image
-              src={book.image}
+              src={book.coverImage}
               alt={`Cover of ${book.title}`}
               width={150}
               height={210}

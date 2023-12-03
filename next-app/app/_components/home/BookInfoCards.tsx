@@ -18,7 +18,7 @@ function BookInfoCard(props: BookInfoCardProps) {
       <div className="flex flex-col gap-2">
         <figure className="flex justify-center">
           <Image
-            src={book.image}
+            src={book.coverImage}
             alt={`Cover of ${book.title}`}
             width={150}
             height={210}
