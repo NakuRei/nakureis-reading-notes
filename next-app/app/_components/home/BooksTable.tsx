@@ -14,7 +14,7 @@ export default function BooksTable(props: BooksTableProps) {
     process.env.RAKUTEN_AFFILIATE_RAKUTEN_BOOKS_URL ?? '/';
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto w-screen">
       <table className="table table-xs">
         <thead>
           <tr>
