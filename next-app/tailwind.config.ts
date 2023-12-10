@@ -17,7 +17,15 @@ const config: Config = {
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
-    themes: ['cupcake', 'night'],
+    themes: [
+      'cupcake',
+      {
+        night: {
+          ...require('daisyui/src/theming/themes')['night'],
+          'base-300': '#1e293b',
+        },
+      },
+    ],
     logs: !process.env.CI,
   },
 };
