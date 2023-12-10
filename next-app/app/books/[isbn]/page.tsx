@@ -121,7 +121,7 @@ export default async function Page({ params }: { params: Params }) {
                 {book?.chapters.map((chapter) => (
                   <li key={chapter}>
                     <Link href={`/books/${book.isbn}/${chapter}`}>
-                      <ReactMarkdown allowedElements={['h1']}>
+                      <ReactMarkdown allowedElements={['h1', 'code']}>
                         {getMarkdownContent(book.dirPath, chapter)}
                       </ReactMarkdown>
                     </Link>

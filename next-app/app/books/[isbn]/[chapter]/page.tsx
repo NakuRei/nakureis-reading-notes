@@ -5,6 +5,8 @@ import remarkGfm from 'remark-gfm';
 
 import TocLinkLi from '@/app/_components/markdown/TocLinkLi';
 import CustomH2 from '@/app/_components/markdown/CustomH2';
+import CustomPre from '@/app/_components/markdown/CustomPre';
+import customCode from '@/app/_components/markdown/CustomCode';
 import getBooks from '@/app/_functions/getBooks';
 import { getBookByISBN } from '@/app/_functions/getBook';
 import getMarkdownContent from '@/app/_functions/getMarkdownContent';
@@ -37,7 +39,7 @@ export default async function Article({ params }: { params: ArticleParams }) {
       <article className="prose prose-sm md:prose-base prose-strong:text-primary max-md:max-w-none w-full">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          components={{ h2: CustomH2 }}
+          components={{ h2: CustomH2, code: customCode, pre: CustomPre }}
         >
           {markdown}
         </ReactMarkdown>
