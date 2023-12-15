@@ -118,15 +118,19 @@ export default async function Page({ params }: { params: Params }) {
             <li>
               <p className="menu-title">内容まとめ</p>
               <ul>
-                {book?.chapters.map((chapter) => (
-                  <li key={chapter}>
-                    <Link href={`/books/${book.isbn}/${chapter}`}>
-                      <ReactMarkdown allowedElements={['h1', 'code']}>
-                        {getMarkdownContent(book.dirPath, chapter)}
-                      </ReactMarkdown>
-                    </Link>
-                  </li>
-                ))}
+                {book?.chapters.map((chapter) =>
+                  chapter === 'about' ? (
+                    <></>
+                  ) : (
+                    <li key={chapter}>
+                      <Link href={`/books/${book.isbn}/${chapter}`}>
+                        <ReactMarkdown allowedElements={['h1', 'code']}>
+                          {getMarkdownContent(book.dirPath, chapter)}
+                        </ReactMarkdown>
+                      </Link>
+                    </li>
+                  ),
+                )}
               </ul>
             </li>
           </ul>

@@ -37,6 +37,8 @@ export async function getBookInfo(bookDirPath: string): Promise<Book | null> {
       ? `/${bookDirPath}/spine.webp`
       : null;
 
+    yamlResult.value.chapters.push('about');
+
     return {
       isbn: yamlResult.value.isbn,
       dirPath: bookDirPath,

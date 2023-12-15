@@ -41,26 +41,44 @@ export default function BookChaptersMenu(props: BookChaptersMenuProps) {
             <p className="text-sm font-bold col-span-2">{props.book.title}</p>
           </Link>
         </li>
-        {props.book.chapters.map((chapter, index) => (
-          <li key={chapter}>
-            <Link
-              href={`/books/${props.book.isbn}/${chapter}`}
-              // className="text-sm"
-              className={`${
-                chapter === props.nowChapter ? 'active' : ''
-              } text-sm`}
-            >
-              <div>{('00' + (index + 1)).slice(-2)}</div>
-              <ReactMarkdown allowedElements={['h1']}>
-                {
-                  props.markdownContents.find(
-                    (contents) => contents.chapter === chapter,
-                  )?.contents
-                }
-              </ReactMarkdown>
-            </Link>
-          </li>
-        ))}
+        <li>
+          <Link
+            href={`/books/${props.book.isbn}/about`}
+            className={`${
+              props.nowChapter === 'about' ? 'active' : ''
+            } text-sm`}
+          >
+            所感
+          </Link>
+        </li>
+        <li>
+          <p className="menu-title">内容まとめ</p>
+          <ul>
+            {props.book.chapters.map((chapter, index) =>
+              chapter === 'about' ? (
+                <></>
+              ) : (
+                <li key={chapter}>
+                  <Link
+                    href={`/books/${props.book.isbn}/${chapter}`}
+                    className={`${
+                      props.nowChapter === chapter ? 'active' : ''
+                    } text-sm`}
+                  >
+                    <div>{('00' + (index + 1)).slice(-2)}</div>
+                    <ReactMarkdown allowedElements={['h1']}>
+                      {
+                        props.markdownContents.find(
+                          (contents) => contents.chapter === chapter,
+                        )?.contents
+                      }
+                    </ReactMarkdown>
+                  </Link>
+                </li>
+              ),
+            )}
+          </ul>
+        </li>
       </ul>
     </div>
   );
