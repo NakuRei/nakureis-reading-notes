@@ -24,11 +24,11 @@ export default function BookSpineImages(props: BookSpineImagesProps) {
                     width={25}
                     height={250}
                     priority={true}
-                    className="h-auto w-9 object-contain"
+                    className="h-auto w-8 object-contain"
                   ></Image>
                 </figure>
               ) : (
-                <div className="flex flex-col h-auto w-9 text-sm bg-base-300">
+                <div className="flex flex-col h-auto w-9 text-sm bg-base-300 min-h-[300px] items-center overflow-hidden">
                   {book.title}
                 </div>
               )}
