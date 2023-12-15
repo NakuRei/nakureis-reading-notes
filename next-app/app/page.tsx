@@ -3,6 +3,7 @@ import {
   Books,
   SquaresFour,
   Table,
+  ChartLine,
 } from '@phosphor-icons/react/dist/ssr';
 
 import MainHeader from './_components/layouts/MainHeader';
@@ -11,18 +12,19 @@ import BookInfoCards from '@/app/_components/home/BookInfoCards';
 import BookImageCards from '@/app/_components/home/BookImageCards';
 import BookSpineImages from '@/app/_components/home/BookSpineImages';
 import BooksTable from '@/app/_components/home/BooksTable';
+import Dashboard from './_components/home/Dashboard';
 import getBooks from '@/app/_functions/getBooks';
 
 export default async function Home() {
   const books = await getBooks();
 
   return (
-    <div className="bg-base-100">
+    <div className="bg-base-100 w-full">
       <MainHeader />
 
       <main>
         <TabSwitcher
-          className="sticky top-0 flex justify-center w-screen"
+          className="sticky top-0 flex flex-wrap justify-center"
           tabs={[
             {
               name: 'Cards',
@@ -43,6 +45,11 @@ export default async function Home() {
               name: 'Table',
               content: <BooksTable books={books} />,
               icon: <Table size={20} />,
+            },
+            {
+              name: 'Dashboard',
+              content: <Dashboard />,
+              icon: <ChartLine size={20} />,
             },
           ]}
         />
