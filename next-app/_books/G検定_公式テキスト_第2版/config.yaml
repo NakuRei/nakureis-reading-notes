@@ -28,10 +28,5 @@ buyUrl: 'https://hb.afl.rakuten.co.jp/hgc/g00q072a.84u5t82d.g00q072a.84u5u12d/?p
 chapters:
   - what-is-ai
   - history-of-ai-research
-  - a
-  - b
-  - c
-  - d
-  - e
-  - f
-  - g
+  - search-and-reasoning
+  - knowledge-representation
