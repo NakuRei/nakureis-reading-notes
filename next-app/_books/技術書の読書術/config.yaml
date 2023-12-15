@@ -5,9 +5,14 @@ publisherName: '翔泳社'
 publishedDate: 2022-11-04
 itemPrice: 2200
 pageCount: 272
-categories: ['自己啓発']
+categories: ['読書術', '自己啓発']
 finishDate: 2023-11-18
 buyUrl: 'https://hb.afl.rakuten.co.jp/hgc/g00q072a.84u5t82d.g00q072a.84u5u12d/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17277953%2F'
 
 chapters:
-  - note
+  - how-to-choose-books-masui
+  - how-to-choose-books-ipusiron
+  - how-to-read-books-masui
+  - how-to-read-books-ipusiron
+  - how-to-output_masui
+  - how-to-output-ipusiron
