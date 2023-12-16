@@ -120,7 +120,7 @@ export default async function Page({ params }: { params: Params }) {
               <ul>
                 {book?.chapters.map((chapter) =>
                   chapter === 'about' ? (
-                    <></>
+                    <li key={chapter}></li>
                   ) : (
                     <li key={chapter}>
                       <Link href={`/books/${book.isbn}/${chapter}`}>

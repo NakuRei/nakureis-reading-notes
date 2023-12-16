@@ -56,7 +56,7 @@ export default function BookChaptersMenu(props: BookChaptersMenuProps) {
           <ul>
             {props.book.chapters.map((chapter, index) =>
               chapter === 'about' ? (
-                <></>
+                <li key={chapter}></li>
               ) : (
                 <li key={chapter}>
                   <Link
