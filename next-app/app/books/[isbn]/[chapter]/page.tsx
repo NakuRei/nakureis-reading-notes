@@ -2,6 +2,9 @@ import { notFound } from 'next/navigation';
 
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
+import 'katex/dist/katex.min.css';
 
 import TocLinkLi from '@/app/_components/markdown/TocLinkLi';
 import CustomH2 from '@/app/_components/markdown/CustomH2';
@@ -38,7 +41,8 @@ export default async function Article({ params }: { params: ArticleParams }) {
     <div className="w-full flex flex-row justify-center gap-10 xl:gap-20 p-10">
       <article className="prose prose-sm md:prose-base prose-strong:text-primary max-md:max-w-none w-full">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeKatex]}
           components={{ h2: CustomH2, code: customCode, pre: CustomPre }}
         >
           {markdown}
