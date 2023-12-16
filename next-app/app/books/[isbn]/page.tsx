@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: Params }) {
               priority={true}
             />
           </figure>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 w-full">
             <h1 className="text-2xl font-extrabold">{book.title}</h1>
             <div className="overflow-x-auto">
               <table className="table table-sm">
