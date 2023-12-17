@@ -28,7 +28,7 @@ export default function BookSpineImages(props: BookSpineImagesProps) {
                   ></Image>
                 </figure>
               ) : (
-                <div className="flex flex-col h-auto w-9 text-sm bg-base-300 min-h-[300px] items-center overflow-hidden">
+                <div className="flex flex-col h-auto w-9 min-h-[300px] items-center overflow-hidden text-sm bg-neutral-content text-neutral">
                   {book.title}
                 </div>
               )}

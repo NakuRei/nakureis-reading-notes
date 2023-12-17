@@ -22,7 +22,8 @@ const config: Config = {
       {
         night: {
           ...require('daisyui/src/theming/themes')['night'],
-          'base-300': '#1e293b',
+          'base-300': '#424242',
+          neutral: '#37474F',
         },
       },
     ],
