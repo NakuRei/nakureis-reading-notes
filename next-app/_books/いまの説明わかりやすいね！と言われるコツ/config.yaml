@@ -5,9 +5,33 @@ publisherName: 'サンマーク出版'
 publishedDate: 2017-04-05
 itemPrice: 1430
 pageCount: 208
-categories: ['自己啓発']
+categories: ['説明術', '自己啓発']
 finishDate: 2023-09-06
 buyUrl: 'https://hb.afl.rakuten.co.jp/hgc/g00q072a.84u5t82d.g00q072a.84u5u12d/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F14729664%2F'
 
 chapters:
   - note
+
+records:
+  - date: 2023-08-16
+    pages: [1, 33]
+  - date: 2023-08-17
+    pages: [34, 49]
+  - date: 2023-08-18
+    pages: [50, 62]
+  - date: 2023-08-21
+    pages: [63, 82]
+  - date: 2023-08-28
+    pages: [83, 98]
+  - date: 2023-08-29
+    pages: [99, 119]
+  - date: 2023-08-30
+    pages: [120, 137]
+  - date: 2023-09-01
+    pages: [138, 153]
+  - date: 2023-09-04
+    pages: [154, 165]
+  - date: 2023-09-05
+    pages: [166, 189]
+  - date: 2023-09-06
+    pages: [190, 205]

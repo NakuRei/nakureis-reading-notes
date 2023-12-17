@@ -39,6 +39,20 @@ export async function getBookInfo(bookDirPath: string): Promise<Book | null> {
 
     yamlResult.value.chapters.push('about');
 
+    const records = yamlResult.value.records
+      ? yamlResult.value.records.map((record) => {
+          const startPage = record.pages.reduce((a, b) => Math.min(a, b));
+          const endPage = record.pages.reduce((a, b) => Math.max(a, b));
+          return {
+            date: record.date,
+            pages: {
+              start: startPage,
+              end: endPage,
+            },
+          };
+        })
+      : null;
+
     return {
       isbn: yamlResult.value.isbn,
       dirPath: bookDirPath,
@@ -54,6 +68,7 @@ export async function getBookInfo(bookDirPath: string): Promise<Book | null> {
       categories: yamlResult.value.categories,
       finishDate: yamlResult.value.finishDate,
       chapters: yamlResult.value.chapters,
+      records: records,
     };
   } catch (error) {
     console.error(`Failed to retrieve book: ${bookDirPath}`, error);

@@ -2,6 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
+interface Record {
+  date: Date;
+  pages: number[];
+}
+
 interface LocalConfigYaml {
   isbn: string;
   title: string;
@@ -14,6 +19,7 @@ interface LocalConfigYaml {
   finishDate: Date;
   buyUrl: string;
   chapters: string[];
+  records: Record[];
 }
 
 interface LocalBookConfig {
@@ -28,6 +34,7 @@ interface LocalBookConfig {
   finishDate: Date;
   buyUrl: string;
   chapters: string[];
+  records: Record[] | undefined;
 }
 
 export default async function getConfigFromYaml(
@@ -56,5 +63,6 @@ export default async function getConfigFromYaml(
     finishDate: localBookData.finishDate,
     buyUrl: localBookData.buyUrl,
     chapters: localBookData.chapters,
+    records: localBookData.records,
   };
 }

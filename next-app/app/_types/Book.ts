@@ -13,6 +13,15 @@ type Book = {
   categories: string[];
   finishDate: Date;
   chapters: string[];
+  records:
+    | {
+        date: Date;
+        pages: {
+          start: number;
+          end: number;
+        };
+      }[]
+    | null;
 };
 
 export default Book;
