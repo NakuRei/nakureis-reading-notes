@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: Params }) {
                   <tr>
                     <th>カテゴリ</th>
                     <td>
-                      <div className="flex flex-row gap-2">
+                      <div className="flex flex-row gap-2 flex-wrap">
                         {book.categories?.map((category) => (
                           <div
                             key={category}
