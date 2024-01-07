@@ -1,0 +1,31 @@
+isbn: '9784827214185'
+title: '新しい教え方の教科書 Z世代の部下を持ったら読む本'
+authors: ['北宏志']
+publisherName: 'ぱる出版'
+publishedDate: 2023-11-02
+itemPrice: 1540
+pageCount: 176
+categories: ['教え方', '自己啓発', '仕事']
+finishDate: 2024-01-02
+buyUrl: 'https://hb.afl.rakuten.co.jp/hgc/g00q072a.84u5t82d.g00q072a.84u5u12d/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17646971%2F'
+
+chapters:
+  - foreword
+  - understanding-generation-z
+  - step1-create-good-relationship
+  - step2-basics-of-teaching-in-reiwa
+  - step3-follow-up-carefully-without-neglect
+  - teaching-in-reiwa-by-partner-and-scene
+  - step4-keep-teaching
+  - step5-create-mechanism
+  - afterword
+
+records:
+  - date: 2023-12-20
+    pages: [1, 71]
+  - date: 2023-12-21
+    pages: [72, 100]
+  - date: 2023-12-24
+    pages: [101, 152]
+  - date: 2024-01-02
+    pages: [153, 174]
