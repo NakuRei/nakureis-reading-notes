@@ -169,7 +169,7 @@ IPUSIRON流では、1回目の読書からマーキングを開始する。学�
 
 [^screenshot]: スクリーンショットの最大のメリットは読書という行為にまったく支障がない点である。電子書籍の種類にも依存しない。もちろん、デメリットもある。ピンポイントではない、スクリーンショットの整理が要るなど。
 
-筆者は[GoodNotes](https://www.goodnotes.com)というノートアプリを愛用[^good_notes]している。PDFならば直接インポートして、Kindleならば同時に開いたりスクリーンショットを貼ったりしてメモを取っている。ほかに[Notability](https://notability.com)も利用している。
+著者は[GoodNotes](https://www.goodnotes.com)というノートアプリを愛用[^good_notes]している。PDFならば直接インポートして、Kindleならば同時に開いたりスクリーンショットを貼ったりしてメモを取っている。ほかに[Notability](https://notability.com)も利用している。
 
 [^good_notes]: 手書きのメモも検索できる、DeepL翻訳と相性が良いなどメリットが多いらしい。
 
@@ -186,7 +186,7 @@ PDFを翻訳する場合は、[DeepL翻訳](https://www.deepl.com)に読み込�
 [^note_app]: [GoodNotes](https://www.goodnotes.com)にPDFをインポートしてテキストをコピーすると改行が取り除かれる。同時にメモを追加できる点が有利である。
 [^remove]: [Shaper](https://dream-exp.net/shaper)にテキストを貼り付けると改行を消してくれる。ブラウザのURL欄にペーストすると、自動で開業岳伯に置き換わる。エディタの置換を利用したり、自作したりしてもよい。
 
-筆者は[GoodNotes](https://www.goodnotes.com)を活用する方法をオススメしている。なぜなら、翻訳しつつ資料にメモを直接書き込めるためである。
+著者は[GoodNotes](https://www.goodnotes.com)を活用する方法をオススメしている。なぜなら、翻訳しつつ資料にメモを直接書き込めるためである。
 
 ## 読書記録のすすめ
 
@@ -202,7 +202,7 @@ PDFを翻訳する場合は、[DeepL翻訳](https://www.deepl.com)に読み込�
 
 [^reading_service]: 読書記録サービスは補助的に活用し、データはローカル環境にバックアップしておくべきである。
 
-筆者はMicrosoft Excelで管理している。本だけでなく新聞や雑誌、映画、音声コンテンツも記録している。筆者の記録項目は次のとおりである。
+著者はMicrosoft Excelで管理している。本だけでなく新聞や雑誌、映画、音声コンテンツも記録している。著者の記録項目は次のとおりである。
 
 - タイトル
 - 著者名 : 省略可
@@ -277,7 +277,7 @@ PDFを翻訳する場合は、[DeepL翻訳](https://www.deepl.com)に読み込�
 
 ## 読書を助ける便利なグッズ/アプリ
 
-ブックスタンド（書見台）を使えば、読書しながらPC作業を並行できる。筆者が活用しているのは[actto ブックスタンド BST-02](https://www.amazon.co.jp/actto-BST-02-%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89/dp/B00JJHAT5G)[^actto]と、[Reodoeer 超薄型ブックスタンド](https://www.amazon.co.jp/Reodoeer-%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89-%E3%83%96%E3%83%83%E3%82%AF%E3%83%9B%E3%83%AB%E3%83%80%E3%83%BC-%E8%AA%AD%E6%9B%B8%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E8%B6%85%E8%BB%BD%E9%87%8F/dp/B08162661S?th=1)である。
+ブックスタンド（書見台）を使えば、読書しながらPC作業を並行できる。著者が活用しているのは[actto ブックスタンド BST-02](https://www.amazon.co.jp/actto-BST-02-%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89/dp/B00JJHAT5G)[^actto]と、[Reodoeer 超薄型ブックスタンド](https://www.amazon.co.jp/Reodoeer-%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89-%E3%83%96%E3%83%83%E3%82%AF%E3%83%9B%E3%83%AB%E3%83%80%E3%83%BC-%E8%AA%AD%E6%9B%B8%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E8%B6%85%E8%BB%BD%E9%87%8F/dp/B08162661S?th=1)である。
 
 [^actto]: この本を読んでacttoのブックスタンドを購入した。いいぞ。
 
