@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# 関数定義
+set -euo pipefail
+error() {
+  local exit_code="${1:-1}" # Default exit status 1
+  shift
+  printf "\033[31;1m%s\033[0m\n" "!!!ERROR!!! $@" >&2
+  exit "$exit_code"
+}
+
+# 引数をチェックする
+set -eo pipefail
+if [ -z "${1-}" ]; then
+  error 1 "引数が1つ必要です。"
+fi
+
+set -euo pipefail
+readonly TITLE=$1
+
+# すでに存在するかチェック
+readonly BOOK_DIR_PATH=next-app/_books/"${TITLE}"
+if [ -d "$BOOK_DIR_PATH" ]; then
+  error 2 "そのタイトルの本はすでに存在しています。"
+fi
+
+readonly BOOK_IMG_DIR_PATH=next-app/public/_books/"${TITLE}"
+if [ -d "$BOOK_IMG_DIR_PATH" ]; then
+  error 3 "そのタイトルの本のカバー画像用ディレクトリは、すでに存在しています。"
+fi
+
+# templatesから本を生成する
+if ! mkdir "${BOOK_DIR_PATH}"; then
+  error 4 "記事用ディレクトリの作成に失敗しました : ${BOOK_DIR_PATH}"
+fi
+
+if ! cp -r next-app/_books_template/* "${BOOK_DIR_PATH}"/; then
+  error 5 "テンプレートのコピーに失敗しました : next-app/_books_template/* to ${BOOK_DIR_PATH}/"
+fi
+
+# カバー画像用のディレクトリを作成する
+if ! mkdir "${BOOK_IMG_DIR_PATH}"; then
+  error 4 "カバー画像用ディレクトリの作成に失敗しました : ${BOOK_IMG_DIR_PATH}"
+fi
