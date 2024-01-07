@@ -30,7 +30,7 @@ function BookInfoCard(props: BookInfoCardProps) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row gap-2 flex-wrap">
           {book.categories?.map((category) => (
             <div key={category} className="badge badge-secondary min-w-max">
               {category}
